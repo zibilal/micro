@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"fmt"
 	"github.com/Sirupsen/logrus"
 	"github.com/labstack/echo"
 	"net"
@@ -10,7 +9,6 @@ import (
 )
 
 func Logger() echo.MiddlewareFunc {
-	name := "manhattan"
 	l := logrus.StandardLogger()
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
@@ -48,7 +46,7 @@ func Logger() echo.MiddlewareFunc {
 				"status":      res.Status(),
 				"text_status": http.StatusText(res.Status()),
 				"took":        latency,
-				fmt.Sprintf("measure#%s.latency", name): latency.Nanoseconds(),
+				"latency":     latency.Nanoseconds(),
 			}).Info("completed handling request")
 
 			return nil
