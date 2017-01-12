@@ -67,6 +67,15 @@ func (l *Loket) SetToken() *Loket {
 	return l
 }
 
+func (l *Loket) SetStruct(v interface{}) *Loket {
+	err := json.Unmarshal([]byte(l.Body), &v)
+	if err != nil {
+		l.Errors = append(l.Errors, err)
+		return l
+	}
+	return l
+}
+
 func (l *Loket) Post(vr, url, body string) *Loket {
 	l.Response, l.Body, l.Errors = gr.New().
 		Post(SetUrl(vr, url)).
