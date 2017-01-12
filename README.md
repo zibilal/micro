@@ -11,7 +11,7 @@ service wrapper for API.
   * `glide install`
   * `cp config.yaml.dist config.yaml`
   * `go build`
-  * `./loket-api`
+  * `./micro-api`
 
 ### Running Test
   * `cd path/to/src/github.com/mataharimall/micro-api`
