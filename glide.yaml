@@ -1,0 +1,22 @@
+package: github.com/mataharimall/micro-api
+import:
+- package: github.com/labstack/echo
+  version: 2.2.0
+  subpackages:
+  - middleware
+- package: github.com/spf13/viper
+- package: gopkg.in/redis.v3
+  version: ^5.2.0
+- package: gopkg.in/mgo.v2
+- package: github.com/jmoiron/sqlx
+- package: github.com/dgrijalva/jwt-go
+  version: 9ed569b5d1ac936e6494082958d63a6aa4fff99a
+- package: github.com/facebookgo/grace
+  subpackages:
+  - gracehttp
+- package: github.com/parnurzeal/gorequest
+  version: ^0.2.14
+- package: github.com/smartystreets/goconvey
+  version: 1.6.2
+  subpackages:
+  - convey

@@ -1,0 +1,21 @@
+---
+env: develop
+debug: true
+port: "3100"
+mysql:
+  read: "root:matahari@(mysqlmaster:3306)/MMDBV3?charset=utf8&parseTime=True&loc=Local"
+  write: "root:matahari@(mysqlslave:3306)/MMDBV3?charset=utf8&parseTime=True&loc=Local"
+redis:
+  master: "redisserver:6379"
+  slave: "redisslave:6379"
+mongo:
+  master: "mongodbserver"
+loket:
+  url: "http://api.sandbox.loket.com"
+  key: "sandbox-TgkDRgyHuRcz5P9aksfTsBqu1GQ49Va0"
+  username: "mataharimall"
+  password: "mataharimall23"
+logger:
+  active: false
+  server: "http://elasticlogserver:9200"
+---
