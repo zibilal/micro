@@ -5,7 +5,7 @@ import:
   subpackages:
   - middleware
 - package: github.com/spf13/viper
-- package: gopkg.in/redis.v3
+- package: gopkg.in/redis.v5
   version: ^5.2.0
 - package: gopkg.in/mgo.v2
 - package: github.com/jmoiron/sqlx

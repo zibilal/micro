@@ -1,5 +1,5 @@
-hash: e9edb217d4b1827a45d0bfddadf76dda9b78e5b4650aa377d364c3242923d81f
-updated: 2017-01-12T10:41:08.77237172+07:00
+hash: 918868ce5f570106085f26c91a9525f7e3da0a8b21ceb8d52e6a9ed28fb014fc
+updated: 2017-01-12T16:50:09.512248424+07:00
 imports:
 - name: github.com/BurntSushi/toml
   version: a4eecd407cf4129fc902ece859a0114e4cf1a7f4
@@ -91,8 +91,14 @@ imports:
   version: 8611c35ab31c1c28aa903d33cf8b6e44a399b09e
 - name: gopkg.in/mgo.v2
   version: d90005c5262a3463800497ea5a89aed5fe22c886
-- name: gopkg.in/redis.v3
+- name: gopkg.in/redis.v5
   version: b9cc17bae020d9c1f467ca0f27d7706c1683c370
+  subpackages:
+  - internal
+  - internal/consistenthash
+  - internal/hashtag
+  - internal/pool
+  - internal/proto
 - name: gopkg.in/yaml.v2
   version: f7716cbe52baa25d2e9b0d0da546fcf909fc16b4
 testImports:
