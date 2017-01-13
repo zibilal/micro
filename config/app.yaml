@@ -26,4 +26,5 @@ redis:
     slave: "redisslave:6379"
 mongo:
     master: "mongodbserver"
+    database: "mataharimall"
 ---
