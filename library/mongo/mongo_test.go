@@ -4,11 +4,11 @@ import (
 	"testing"
 	"time"
 
-	app "github.com/mataharimall/micro-api"
+	"github.com/mataharimall/micro-api/config"
 )
 
 func init() {
-	app.InitConfig()
+	config.Init()
 }
 
 func TestConnection(t *testing.T) {

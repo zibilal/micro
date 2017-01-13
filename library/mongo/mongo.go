@@ -12,6 +12,7 @@ import (
 
 const (
 	indexName            = "expire_index"
+	fieldName            = "_id"
 	timeFieldName        = "at"
 	MongoDupKeyErrorCode = 11000
 )
@@ -25,7 +26,7 @@ type Store struct {
 }
 
 func createMongoConn() *mgo.Session {
-	session, err := mgo.Dial(c.GetString("mongodb"))
+	session, err := mgo.Dial(c.GetString("mongo.database"))
 	if err != nil {
 		panic(err)
 	}
@@ -66,10 +67,10 @@ func (s *Store) Close() {
 }
 
 //
-func (s *Store) Add(field, key string, value interface{}) error {
+func (s *Store) Add(key string, value interface{}) error {
 	doc := entry{
 		time.Now(),
-		field,
+		fieldName,
 		key,
 		nil,
 		nil,
