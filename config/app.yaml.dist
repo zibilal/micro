@@ -1,0 +1,30 @@
+---
+app:
+    env: "develop"
+    debug: true
+    port: "3100"
+    logger:
+        active: false
+        server: "http://elasticlogserver:9200"
+loket:
+    url: "http://api.sandbox.loket.com"
+    key: "sandbox-TgkDRgyHuRcz5P9aksfTsBqu1GQ49Va0"
+    username: "mataharimall"
+    password: "mataharimall23"
+mysql:
+    database: "MMDBv3"
+    master:
+        host: "mysqlserver:3306"
+        login: "root"
+        password: "matahari"
+    slave:
+        host: "mysqlserver:3306"
+        login: "root"
+        password: "matahari"
+redis:
+    master: "redisserver:6379"
+    slave: "redisslave:6379"
+mongo:
+    master: "mongodbserver"
+    database: "mataharimall"
+---
