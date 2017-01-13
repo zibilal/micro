@@ -8,6 +8,8 @@ import (
 	"net/http"
 )
 
+var conf map[string]string
+
 type Loket struct {
 	UserName     string
 	Password     string
@@ -19,7 +21,12 @@ type Loket struct {
 	TokenExpired bool
 }
 
-var LOKET_URI = c.GetString("loket.url")
+func getConfig(key string) string {
+	if _, ok := conf[key]; ok {
+		return conf[key]
+	}
+	return ""
+}
 
 func (l *Loket) GetAuth() *Loket {
 	if l.TokenExpired {
@@ -29,23 +36,24 @@ func (l *Loket) GetAuth() *Loket {
 		return l
 	}
 	body := fmt.Sprintf(`{"username": "%s","password": "%s","APIKEY": "%s"}`, l.UserName, l.Password, l.ApiKey)
-	l.Post("v3", "login", body)
+	l.Post("/v3/login", "form", body)
 	l.SetToken()
 	return l
 }
 
 func New() *Loket {
+	conf = c.GetStringMapString("loket")
 	l := &Loket{
-		UserName: c.GetString("loket.username"),
-		Password: c.GetString("loket.password"),
-		ApiKey:   c.GetString("loket.key"),
+		UserName: getConfig("username"),
+		Password: getConfig("password"),
+		ApiKey:   getConfig("key"),
 		Token:    "",
 	}
 	return l
 }
 
-func SetUrl(version, url string) string {
-	t := fmt.Sprintf("%s/%s/%s", LOKET_URI, version, url)
+func SetUrl(url string) string {
+	t := fmt.Sprintf("%s%s", getConfig("url"), url)
 	return t
 }
 
@@ -76,19 +84,18 @@ func (l *Loket) SetStruct(v interface{}) *Loket {
 	return l
 }
 
-func (l *Loket) Post(vr, url, body string) *Loket {
+func (l *Loket) Post(url, t, body string) *Loket {
 	l.Response, l.Body, l.Errors = gr.New().
-		Post(SetUrl(vr, url)).
-		Type("form").
+		Post(SetUrl(url)).
+		Type(t).
 		Send(body).
 		End()
 	return l
 }
 
-func (l *Loket) Get(vr, url, body string) *Loket {
+func (l *Loket) Get(url string) *Loket {
 	l.Response, l.Body, l.Errors = gr.New().
-		Get(SetUrl(vr, url)).
-		Send(body).
+		Get(SetUrl(url)).
 		End()
 	return l
 }
