@@ -1,14 +1,12 @@
 package main
 
 import (
+	_ "github.com/mataharimall/micro-api/apps/loket"
+	"github.com/mataharimall/micro-api/commons"
 	"github.com/mataharimall/micro-api/config"
 	"log"
 	"os"
 	"runtime"
-)
-
-const (
-	APP_VER = "v1"
 )
 
 func init() {
@@ -20,4 +18,5 @@ func init() {
 }
 
 func main() {
+	commons.RouterManager.Init()
 }
