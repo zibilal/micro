@@ -26,9 +26,10 @@ func Logger() echo.MiddlewareFunc {
 			}
 
 			entry := l.WithFields(logrus.Fields{
-				"request": req.URI(),
-				"method":  req.Method,
+				"url":     req.URI(),
+				"method":  req.Method(),
 				"remote":  remoteAddr,
+				"request": req.Body(),
 			})
 
 			if reqID := req.Header().Get("X-Request-Id"); reqID != "" {
@@ -42,7 +43,6 @@ func Logger() echo.MiddlewareFunc {
 
 			latency := time.Since(start)
 			entry.WithFields(logrus.Fields{
-				"size":        res.Size(),
 				"status":      res.Status(),
 				"text_status": http.StatusText(res.Status()),
 				"took":        latency,

@@ -3,7 +3,7 @@ package assertion
 import (
 	"bytes"
 	"fmt"
-	. "github.com/mataharimall/micro-api/commons/idata"
+	. "github.com/mataharimall/micro-api/helpers/idata"
 	"reflect"
 )
 
