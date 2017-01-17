@@ -8,7 +8,9 @@ import (
 	"net/http"
 )
 
-type LoketRoute struct{}
+type LoketRoute struct{
+
+}
 
 func init() {
 	commons.RouterManager.Register("route.loket", &LoketRoute{})
@@ -17,6 +19,12 @@ func init() {
 func (l *LoketRoute) SetRoute(e *echo.Echo) *echo.Echo {
 	e.Use(em.Logger())
 	e.Post("/loket/event", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Hello, World!")
+	})
+
+	e.Post("/loket/invoice/create", func(c echo.Context) error {
+		// 1. create invoice
+		// 2. save to mongo
 		return c.String(http.StatusOK, "Hello, World!")
 	})
 	return e
