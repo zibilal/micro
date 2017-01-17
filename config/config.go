@@ -7,7 +7,7 @@ import (
 	"log"
 )
 
-const BASE_PATH = "$GOPATH/src/github.com/mataharimall/micro-api/config"
+const BASE_PATH = "$GOPATH/src/github.com/mataharimall/micro/config"
 
 func Init() (err error) {
 	config.SetConfigName("app")

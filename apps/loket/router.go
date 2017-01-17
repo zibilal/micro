@@ -3,15 +3,14 @@ package loket
 import (
 	"github.com/labstack/echo"
 	em "github.com/labstack/echo/middleware"
-	"github.com/mataharimall/micro-api/commons"
-	_ "github.com/mataharimall/micro-api/middlewares"
+	"github.com/mataharimall/micro"
 	"net/http"
 )
 
 type LoketRoute struct{}
 
 func init() {
-	commons.RouterManager.Register("route.loket", &LoketRoute{})
+	micro.RouterManager.Register("route.loket", &LoketRoute{})
 }
 
 func (l *LoketRoute) SetRoute(e *echo.Echo) *echo.Echo {

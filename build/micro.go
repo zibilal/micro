@@ -1,9 +1,9 @@
 package main
 
 import (
-	_ "github.com/mataharimall/micro-api/apps/loket"
-	"github.com/mataharimall/micro-api/commons"
-	"github.com/mataharimall/micro-api/config"
+	"github.com/mataharimall/micro"
+	_ "github.com/mataharimall/micro/apps/loket"
+	"github.com/mataharimall/micro/config"
 	"log"
 	"os"
 	"runtime"
@@ -18,5 +18,5 @@ func init() {
 }
 
 func main() {
-	commons.RouterManager.Init()
+	micro.RouterManager.Init()
 }
