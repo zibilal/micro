@@ -10,5 +10,5 @@ func init() {
 }
 
 func main() {
-	micro.Init()
+	micro.Construct()
 }

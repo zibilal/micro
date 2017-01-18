@@ -6,10 +6,11 @@ import (
 
 	"github.com/labstack/gommon/color"
 	"github.com/mataharimall/micro/api"
-	"github.com/mataharimall/micro/apps/loket"
 	"github.com/mataharimall/micro/container"
 	"github.com/mataharimall/micro/service"
 	config "github.com/spf13/viper"
+
+	_ "github.com/mataharimall/micro/apps/loket"
 )
 
 const BASE_PATH = "$GOPATH/src/github.com/mataharimall/micro/config"
@@ -29,17 +30,12 @@ func initContainer() {
 	})
 }
 
-func initService() {
-	service.ServiceManager.Register("route.loket", &loket.LoketRoute{})
-	service.ServiceManager.Init()
-}
-
-func Init() error {
+func Construct() error {
 	if err := initConfig(); err != nil {
 		return err
 		os.Exit(1)
 	}
 	initContainer()
-	initService()
+	service.ServiceManager.Init()
 	return nil
 }
