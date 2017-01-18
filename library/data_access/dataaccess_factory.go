@@ -12,7 +12,7 @@ const (
 	MONGO = "mongoaccess"
 )
 
-func NewDataAccessFactory(dbapps string) (*DataAccessor, error) {
+func NewDataAccessFactory(dbapps string) (DataAccessor, error) {
 
 	switch dbapps {
 	case MYSQL:

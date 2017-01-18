@@ -16,11 +16,11 @@ type MysqlAccess struct {
 	dbSlave *sqlx.DB
 }
 
-func NewMysqlRepository(db1, db2 *sqlx.DB) *MysqlAccess {
+func NewMysqlRepository(db1, db2 *sqlx.DB) (*MysqlAccess, error) {
 	return &MysqlAccess{
 		dbMaster:db1,
 		dbSlave:db2,
-	}
+	}, nil
 }
 
 func fieldName(field reflect.StructField) string {

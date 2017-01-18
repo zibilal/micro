@@ -40,3 +40,16 @@ func TestGetEvents(t *testing.T) {
 		So(e.Status, ShouldEqual, "success")
 	})
 }
+
+func TestLoket_Configure(t *testing.T) {
+	Convey("Configure test", t, func() {
+		l := New().Configure(map[string]interface{}{
+			"UserName": "testinguser",
+			"Password": "testingpassword",
+			"ApiKey": "12341234124",
+		})
+		So("testinguser", ShouldEqual, l.UserName)
+		So("testingpassword", ShouldEqual, l.Password)
+		So("12341234124", ShouldEqual, l.ApiKey)
+	})
+}

@@ -6,6 +6,8 @@ import (
 	gr "github.com/parnurzeal/gorequest"
 	c "github.com/spf13/viper"
 	"net/http"
+	"reflect"
+	"github.com/mataharimall/micro-api/helpers"
 )
 
 var conf map[string]string
@@ -19,6 +21,43 @@ type Loket struct {
 	Body         string
 	Errors       []error
 	TokenExpired bool
+}
+
+func (c *Loket) Configure(inputs map[string]interface{}) *Loket {
+	fmt.Println("Inputs", inputs)
+	if len(inputs) != 3 {
+		return nil
+	}
+
+	val := reflect.Indirect(reflect.ValueOf(c))
+	t := val.Type()
+
+	if val.Kind() == reflect.Struct {
+		for i:=0;i < t.NumField(); i++ {
+			field := t.Field(i)
+			var dest reflect.Value
+
+			fName := helpers.FieldName("app", field)
+
+			switch field.Type.Kind() {
+			case reflect.String:
+				if inputs[fName] != nil {
+					tmp := inputs[fName].(string)
+					dest = reflect.ValueOf(tmp)
+					val.Field(i).Set(dest)
+				}
+			case reflect.Uint:
+				if inputs[fName] != nil {
+					tmp := inputs[fName].(uint)
+					dest = reflect.ValueOf(tmp)
+					val.Field(i).Set(dest)
+				}
+			}
+
+		}
+	}
+
+	return c
 }
 
 func getConfig(key string) string {
