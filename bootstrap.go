@@ -5,7 +5,9 @@ import (
 	"os"
 
 	"github.com/labstack/gommon/color"
+	"github.com/mataharimall/micro/api"
 	"github.com/mataharimall/micro/apps/loket"
+	"github.com/mataharimall/micro/container"
 	"github.com/mataharimall/micro/service"
 	config "github.com/spf13/viper"
 )
@@ -22,6 +24,9 @@ func initConfig() (err error) {
 }
 
 func initContainer() {
+	container.Set("api.loket", func() (interface{}, error) {
+		return api.NewLoketApi("loket")
+	})
 }
 
 func initService() {
