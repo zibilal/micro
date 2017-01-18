@@ -88,6 +88,7 @@ func (l *Loket) SetStruct(v interface{}) *Loket {
 }
 
 func (l *Loket) Post(url, t, body string) *Loket {
+	fmt.Println("The Tokent:", l.Token)
 	l.Response, l.Body, l.Errors = gr.New().
 		Post(SetUrl(url)).
 		Set("token", l.Token).
