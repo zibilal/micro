@@ -3,24 +3,25 @@ app:
     env: "develop"
     debug: true
     port: "3100"
-    logger:
-        active: false
-        server: "http://elasticlogserver:9200"
+    cache: "redis"
+    cache_enabled: true
+    cache_duration: 300
 loket:
     url: "http://api.sandbox.loket.com"
     key: "sandbox-TgkDRgyHuRcz5P9aksfTsBqu1GQ49Va0"
     username: "mataharimall"
     password: "mataharimall23"
 mysql:
-    database: "MMDBv3"
     master:
         host: "mysqlserver:3306"
         login: "root"
         password: "matahari"
+        database: "MMDBv3"
     slave:
         host: "mysqlserver:3306"
         login: "root"
         password: "matahari"
+        database: "MMDBv3"
 redis:
     master: "redisserver:6379"
     slave: "redisslave:6379"

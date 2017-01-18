@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/mataharimall/micro-api/helpers"
+	"github.com/mataharimall/micro/helpers"
 )
 
 type AppError struct {

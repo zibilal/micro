@@ -1,7 +1,6 @@
-package micro
+package service
 
 import (
-	"fmt"
 	"github.com/facebookgo/grace/gracehttp"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
@@ -9,9 +8,9 @@ import (
 	"sync"
 )
 
-var RouterManager = &router{}
+var ServiceManager = &service{}
 
-type router struct {
+type service struct {
 	mux        sync.RWMutex
 	collection map[string]interface{}
 }
@@ -20,7 +19,7 @@ type collection interface {
 	SetRoute(*echo.Echo) *echo.Echo
 }
 
-func (r *router) Register(name string, col collection) {
+func (r *service) Register(name string, col collection) {
 	if r.collection == nil {
 		r.collection = make(map[string]interface{})
 	}
@@ -29,10 +28,9 @@ func (r *router) Register(name string, col collection) {
 	r.mux.Unlock()
 }
 
-func (r *router) Init() {
+func (r *service) Init() {
 	e := echo.New()
 	e.SetDebug(c.GetBool("app.debug"))
-	fmt.Println("%#v", r)
 	for _, v := range r.collection {
 		if d, ok := v.(collection); ok {
 			e = d.SetRoute(e)
@@ -42,3 +40,5 @@ func (r *router) Init() {
 	std.SetHandler(e)
 	gracehttp.Serve(std.Server)
 }
+
+
