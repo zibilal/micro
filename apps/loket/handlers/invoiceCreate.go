@@ -7,6 +7,7 @@ import (
 	"github.com/mataharimall/micro/api"
 	"encoding/json"
 	"fmt"
+	"github.com/mataharimall/micro/helpers"
 )
 
 type CreateInvoiceRequestResponse struct {
@@ -68,6 +69,8 @@ func CreateInvoice(c echo.Context) error {
 	}
 
 	loket.GetAuth().Post("/v3/invoice/create", "json", str)
+	var m map[string]interface{}
+	json.Unmarshal([]byte(loket.Body), &m)
 
-	return c.JSON(http.StatusOK, loket.Body)
+	return helpers.BuildJSON(c, m)
 }
