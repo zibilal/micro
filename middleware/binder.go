@@ -2,7 +2,6 @@ package middleware
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"strings"
 
@@ -31,22 +30,15 @@ func (AppBinder) Bind(i interface{}, c echo.Context) (err error) {
 		}
 		if strings.EqualFold(ctype, AppJsonHeader) {
 			if err = json.NewDecoder(req.Body()).Decode(i); err != nil {
-				if ute, ok := err.(*json.UnmarshalTypeError); ok {
-					return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("type error: expected=%v, got=%v, offset=%v", ute.Type, ute.Value, ute.Offset))
-				} else if se, ok := err.(*json.SyntaxError); ok {
-					return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Syntax error: offset=%v, error=%v", se.Offset, se.Error()))
-				} else {
-					return echo.NewHTTPError(http.StatusBadRequest, err.Error())
-				}
 				return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 			}
 		} else {
 			c.Error(echo.ErrUnsupportedMediaType)
-			return
+			return echo.ErrUnsupportedMediaType
 		}
 	default:
 		c.Error(echo.ErrUnsupportedMediaType)
-		return
+		return echo.ErrUnsupportedMediaType
 	}
 	return
 }

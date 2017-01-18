@@ -20,9 +20,9 @@ type CommonRequest struct {
 }
 
 func GetEventList(c echo.Context) error {
-	r := &eventsList{}
+	r := new(eventsList)
 
-	if err := c.Bind(r.Request); err != nil {
+	if err := c.Bind(&r.Request); err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
@@ -32,7 +32,7 @@ func GetEventList(c echo.Context) error {
 
 	}
 
-	loket.GetAuth().Post("/v3/events", "form", "")
+	loket.GetAuth().Post("/v3/event", "form", "")
 	return c.JSON(http.StatusOK, loket.Body)
 
 }
