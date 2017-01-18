@@ -15,8 +15,10 @@ func init() {
 
 func (l *LoketRoute) SetRoute(s *echo.Echo) *echo.Echo {
 	s.Use(middleware.Logger())
+
 	s.SetBinder(middleware.AppBinder{})
 	s.SetHTTPErrorHandler(middleware.AppHttpErrorHandler)
+
 	s.Get("/loket/event", handlers.GetEventList)
 	return s
 }
