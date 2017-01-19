@@ -1,5 +1,5 @@
-hash: 2509d8bb09612822cba2485825ae2dea7fdc364a2227513d0f0a24c13de5843f
-updated: 2017-01-19T12:08:44.136131563+07:00
+hash: 9260c8d56d22ea70c52930e6fb7ca0726093f270549386dd93f1b2eca1876473
+updated: 2017-01-19T15:07:03.475536947+07:00
 imports:
 - name: github.com/BurntSushi/toml
   version: a4eecd407cf4129fc902ece859a0114e4cf1a7f4
@@ -47,7 +47,7 @@ imports:
 - name: github.com/magiconair/properties
   version: c81f9d71af8f8cba1466501d30326b99a4e56c19
 - name: github.com/maps90/librarian
-  version: 45e50f9ec34c7962493791977ab903720400da90
+  version: 992ea5c02769c9cf7e8efd644ffc99efb83d67ea
   subpackages:
   - datasource
 - name: github.com/mattn/go-colorable
