@@ -47,7 +47,9 @@ imports:
 - name: github.com/magiconair/properties
   version: c81f9d71af8f8cba1466501d30326b99a4e56c19
 - name: github.com/maps90/librarian
-  version: 562d75b4432d4c01e342b74cdd6bb00d3e453ab6
+  version: 45e50f9ec34c7962493791977ab903720400da90
+  subpackages:
+  - datasource
 - name: github.com/mattn/go-colorable
   version: 9cbef7c35391cca05f15f8181dc0b18bc9736dbb
 - name: github.com/mattn/go-isatty
