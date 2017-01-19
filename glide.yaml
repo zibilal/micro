@@ -9,4 +9,4 @@ import:
   subpackages:
   - convey
 - package: github.com/maps90/librarian
-  version: 562d75b4432d4c01e342b74cdd6bb00d3e453ab6
+  version: 45e50f9ec34c7962493791977ab903720400da90
