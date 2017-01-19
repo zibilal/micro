@@ -21,5 +21,7 @@ func (l *LoketRoute) SetRoute(s *echo.Echo) *echo.Echo {
 
 	s.Get("/loket/event", handlers.GetEventList)
 	s.Post("/loket/invoice/create", handlers.CreateInvoice)
+	s.Post("/loket/invoice/list/attendee", handlers.FetchInvoiceListAttendee)
+
 	return s
 }
