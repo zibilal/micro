@@ -1,13 +1,13 @@
-package handlers
+package handler
 
 import (
 	"github.com/labstack/echo"
 	"net/http"
-	"github.com/mataharimall/micro/container"
 	"github.com/mataharimall/micro/api"
 	"encoding/json"
 	"fmt"
-	"github.com/mataharimall/micro/helpers"
+	"github.com/mataharimall/micro/helper"
+	"github.com/maps90/librarian"
 )
 
 type CreateInvoiceRequestResponse struct {
@@ -49,7 +49,7 @@ func CreateInvoice(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
-	loket, ok := container.Get("api.loket").(*api.Loket)
+	loket, ok := librarian.Get("api.loket").(*api.Loket)
 
 	fmt.Printf("Type %T\n", loket)
 	fmt.Printf("Value %v\n", loket)
@@ -72,5 +72,5 @@ func CreateInvoice(c echo.Context) error {
 	var m map[string]interface{}
 	json.Unmarshal([]byte(loket.Body), &m)
 
-	return helpers.BuildJSON(c, m)
+	return helper.BuildJSON(c, m)
 }
