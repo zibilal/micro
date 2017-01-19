@@ -49,7 +49,7 @@ func CreateInvoice(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
-	loket, ok := librarian.Get("api.loket").(*api.Loket)
+	loket, ok := librarian.Get("loket").(*api.Loket)
 
 	fmt.Printf("Type %T\n", loket)
 	fmt.Printf("Value %v\n", loket)
