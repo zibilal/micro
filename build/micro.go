@@ -1,7 +1,9 @@
 package main
 
 import (
-	"github.com/mataharimall/micro"
+	"fmt"
+	"github.com/mataharimall/micro/app"
+	"os"
 	"runtime"
 )
 
@@ -10,5 +12,8 @@ func init() {
 }
 
 func main() {
-	micro.Construct()
+	if err := app.Construct(); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 }

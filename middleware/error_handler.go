@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/mataharimall/micro/helpers"
+	"github.com/mataharimall/micro/helper"
 )
 
 type AppError struct {
@@ -34,7 +34,7 @@ var AppHttpErrorHandler = func(err error, c echo.Context) {
 		msg = he.Error()
 	}
 
-	reqId := helpers.RandomString(20)
+	reqId := helper.RandomString(20)
 
 	if !c.Response().Committed() {
 		// replace all error into json

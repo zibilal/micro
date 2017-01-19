@@ -1,9 +1,9 @@
-package helpers
+package helper
 
 import (
-	"reflect"
-	"net/http"
 	"github.com/labstack/echo"
+	"net/http"
+	"reflect"
 )
 
 func BuildJSON(c echo.Context, rs interface{}) (err error) {

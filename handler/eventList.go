@@ -1,21 +1,21 @@
-package handlers
+package handler
 
 import (
-	"github.com/labstack/echo"
-	"github.com/mataharimall/micro/api"
-	"github.com/mataharimall/micro/container"
-	"github.com/mataharimall/micro/helpers"
-	"net/http"
 	"encoding/json"
+	"github.com/labstack/echo"
+	"github.com/maps90/librarian"
+	"github.com/mataharimall/micro/api"
+	"github.com/mataharimall/micro/helper"
+	"net/http"
 )
 
 type EventsList struct {
-	Request interface{}
+	Request  interface{}
 	Response interface{}
 }
 
 func GetEventList(c echo.Context) error {
-	loket, ok := container.Get("api.loket").(*api.Loket)
+	loket, ok := librarian.Get("loket").(*api.Loket)
 	if !ok {
 		return echo.NewHTTPError(http.StatusInternalServerError, "Internal Server Error")
 
@@ -25,6 +25,6 @@ func GetEventList(c echo.Context) error {
 	var m map[string]interface{}
 	json.Unmarshal([]byte(loket.Body), &m)
 
-	return helpers.BuildJSON(c, m)
+	return helper.BuildJSON(c, m)
 
 }

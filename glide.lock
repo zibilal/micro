@@ -1,5 +1,5 @@
-hash: 918868ce5f570106085f26c91a9525f7e3da0a8b21ceb8d52e6a9ed28fb014fc
-updated: 2017-01-12T16:50:09.512248424+07:00
+hash: 2509d8bb09612822cba2485825ae2dea7fdc364a2227513d0f0a24c13de5843f
+updated: 2017-01-19T12:08:44.136131563+07:00
 imports:
 - name: github.com/BurntSushi/toml
   version: a4eecd407cf4129fc902ece859a0114e4cf1a7f4
@@ -27,8 +27,6 @@ imports:
   - json/parser
   - json/scanner
   - json/token
-- name: github.com/jmoiron/sqlx
-  version: cac998c4f0959c19c638c523e374fa8e4e0bcfe3
 - name: github.com/kr/pretty
   version: e6ac2fc51e89a3249e82157fa0bb7a18ef9dd5bb
 - name: github.com/kr/text
@@ -44,12 +42,12 @@ imports:
 - name: github.com/labstack/gommon
   version: 2d272df536d051e737aea353b86c979d6e88bce0
   subpackages:
-  - bytes
   - color
   - log
-  - random
 - name: github.com/magiconair/properties
   version: c81f9d71af8f8cba1466501d30326b99a4e56c19
+- name: github.com/maps90/librarian
+  version: 562d75b4432d4c01e342b74cdd6bb00d3e453ab6
 - name: github.com/mattn/go-colorable
   version: 9cbef7c35391cca05f15f8181dc0b18bc9736dbb
 - name: github.com/mattn/go-isatty
@@ -89,16 +87,6 @@ imports:
   - unix
 - name: gopkg.in/fsnotify.v1
   version: 8611c35ab31c1c28aa903d33cf8b6e44a399b09e
-- name: gopkg.in/mgo.v2
-  version: d90005c5262a3463800497ea5a89aed5fe22c886
-- name: gopkg.in/redis.v5
-  version: b9cc17bae020d9c1f467ca0f27d7706c1683c370
-  subpackages:
-  - internal
-  - internal/consistenthash
-  - internal/hashtag
-  - internal/pool
-  - internal/proto
 - name: gopkg.in/yaml.v2
   version: f7716cbe52baa25d2e9b0d0da546fcf909fc16b4
 testImports:

@@ -90,6 +90,7 @@ func (l *Loket) SetStruct(v interface{}) *Loket {
 func (l *Loket) Post(url, t, body string) *Loket {
 	l.Response, l.Body, l.Errors = gr.New().
 		Post(SetUrl(url)).
+		Set("token", l.Token).
 		Type(t).
 		Send(body).
 		End()
@@ -98,6 +99,7 @@ func (l *Loket) Post(url, t, body string) *Loket {
 
 func (l *Loket) Get(url string) *Loket {
 	l.Response, l.Body, l.Errors = gr.New().
+		Set("token", l.Token).
 		Get(SetUrl(url)).
 		End()
 	return l
