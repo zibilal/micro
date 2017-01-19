@@ -3,25 +3,14 @@ app:
     env: "develop"
     debug: true
     port: "3100"
-    cache: "redis"
-    cache_enabled: true
-    cache_duration: 300
 loket:
     url: "http://api.sandbox.loket.com"
     key: "sandbox-TgkDRgyHuRcz5P9aksfTsBqu1GQ49Va0"
     username: "mataharimall"
     password: "mataharimall23"
 mysql:
-    master:
-        host: "mysqlserver:3306"
-        login: "root"
-        password: "matahari"
-        database: "MMDBv3"
-    slave:
-        host: "mysqlserver:3306"
-        login: "root"
-        password: "matahari"
-        database: "MMDBv3"
+    master: "root:matahari@(mysqlserver:3306)/MMDBV3?charset=utf8&parseTime=True&loc=Local"
+    slave: "root:matahari@(mysqlserver:3306)/MMDBV3?charset=utf8&parseTime=True&loc=Local"
 redis:
     master: "redisserver:6379"
     slave: "redisslave:6379"
